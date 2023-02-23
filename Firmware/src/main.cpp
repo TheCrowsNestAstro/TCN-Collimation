@@ -220,36 +220,12 @@ void setup() {
   analogWrite(BCC_PIN, 0);
   analogWrite(CC_PIN, 0);
   analogWrite(CCC_PIN, 0);
-
-  
-
-  //Motor A Clockwise/Counter Clockwise
-  //parser.registerCommand("A", "si", &cmd_motorA);
-
-  //Motor B Clockwise/Counter Clockwise
-  //parser.registerCommand("B", "si", &cmd_motorB);
-  
-  //Motor C Clockwise/Counter Clockwise
-  //parser.registerCommand("C", "si", &cmd_motorC);
-  
-
-  // Serial.println("registered command: TEST <string> <double> <int64> <uint64>");
-  // Serial.println("example: TEST \"\\x41bc\\ndef\" -1.234e5 -123 123");
 }
 
 void loop() {
   if (Serial.available()) {
     char line[128];
     size_t lineLength = Serial.readBytesUntil('\n', line, 127);
-    //line[lineLength] = '\0';
-
-    //Serial.println(line[0]);
-    //Serial.println(String(line[1]).toInt());
-
     command(line[0], String(line[1]).toInt());
-
-    //char response[MyCommandParser::MAX_RESPONSE_SIZE];
-    //parser.processCommand(line, response);
-    //Serial.println(response);
   }
 }
